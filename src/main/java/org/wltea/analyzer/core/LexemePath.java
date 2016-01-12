@@ -125,7 +125,10 @@ class LexemePath extends QuickSortSet implements Comparable<LexemePath>{
 		int start = this.getPathBegin() < lexeme.getBeginPosition() ? this.getPathBegin() : lexeme.getBegin();
 		int end = this.getPathEnd() > lexeme.getEndPosition() ? this.getPathEnd() : lexeme.getEndPosition();
 
-		return (end - start) <= (this.getPathLength() + lexeme.getLength());
+		return (end - start) < (this.getPathLength() + lexeme.getLength());
+
+		/*return (lexeme.getBegin() >= this.pathBegin && lexeme.getBegin() < this.pathEnd)
+				|| (this.pathBegin >= lexeme.getBegin() && this.pathBegin < lexeme.getBegin()+ lexeme.getLength());*/
 	}
 	
 	int getPathBegin() {
