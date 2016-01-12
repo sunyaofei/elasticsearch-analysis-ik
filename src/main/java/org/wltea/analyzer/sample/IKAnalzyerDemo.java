@@ -57,8 +57,8 @@ public class IKAnalzyerDemo {
 		Dictionary.initial(new Configuration(new Environment(builder.build())));
 
 		//构建IK分词器，使用smart分词模式
-		//		Analyzer analyzer = new IKAnalyzer(true);
-		Analyzer analyzer = new IKAnalyzer(false);
+		Analyzer analyzer = new IKAnalyzer(true);
+//		Analyzer analyzer = new IKAnalyzer(false);
 
 		//获取Lucene的TokenStream对象
 		TokenStream ts = null;
@@ -68,6 +68,7 @@ public class IKAnalzyerDemo {
 			//ts = analyzer.tokenStream("myfield", new StringReader("我孙要飞KAB"));
 			ts = analyzer.tokenStream("myfield", new StringReader("孙要求"));
 			ts = analyzer.tokenStream("myfield", new StringReader("孙要求是正确的"));
+			ts = analyzer.tokenStream("myfield", new StringReader("蒋介石首次访问"));
 			//获取词元位置属性
 			OffsetAttribute  offset = ts.addAttribute(OffsetAttribute.class);
 			//获取词元文本属性
